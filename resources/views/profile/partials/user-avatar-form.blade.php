@@ -4,18 +4,20 @@
             User Avatar
         </h2>
 
+        <img width="80" height="80" class="rounded-full" src="{{ "/storage/$user->avatar" }}" alt="avatar">
+
         <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
             Add or update user avatar
         </p>
     </header>
 
     @if (session('message'))
-        <div class="text-red-500">
+        <div class="text-green-500">
             {{ session('message') }}
         </div>
     @endif
 
-    <form method="post" action="{{ route('profile.avatar') }}" class="mt-6 space-y-6">
+    <form method="post" action="{{ route('profile.avatar') }}" class="mt-6 space-y-6" enctype="multipart/form-data">
         @csrf
         @method('patch')
 
